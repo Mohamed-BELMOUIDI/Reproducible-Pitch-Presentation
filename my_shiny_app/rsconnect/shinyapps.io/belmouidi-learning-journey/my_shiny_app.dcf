@@ -1,0 +1,10 @@
+name: my_shiny_app
+title:
+username: belmouidi-learning-journey
+account: belmouidi-learning-journey
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13652243
+bundleId: 9589128
+url: https://belmouidi-learning-journey.shinyapps.io/my_shiny_app/
+version: 1
