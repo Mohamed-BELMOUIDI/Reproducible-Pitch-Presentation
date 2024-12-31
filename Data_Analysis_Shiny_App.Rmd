@@ -1,0 +1,63 @@
+---
+title: "Data Analysis Shiny App"
+author: "Mohamed BELMOUIDI"
+date: "December 31, 2024"
+output: ioslides_presentation
+runtime: shiny
+---
+
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(ggplot2)
+```
+
+## The Problem
+
+Ever wondered how to quickly analyze numeric data?
+  
+- Many people struggle with basic data analysis
+- Excel can be cumbersome
+- Statistical software can be overwhelming
+- Need for a simple, user-friendly solution
+
+## Our Solution {.build}
+
+Introducing the Data Analysis Shiny App!
+  
+```{r, echo=TRUE}
+# Example of how simple the analysis can be
+sample_data <- c(1, 2, 3, 4, 5)
+cat("Basic Statistics:\n")
+cat("Mean:", mean(sample_data), "\n")
+cat("Median:", median(sample_data), "\n")
+cat("SD:", sd(sample_data), "\n")
+```
+
+## Features in Action
+
+```{r, fig.height=4}
+# Generate sample data for demonstration
+set.seed(123)
+demo_data <- rnorm(100)
+
+# Create a histogram
+ggplot(data.frame(x=demo_data), aes(x=x)) +
+  geom_histogram(fill="lightblue", color="white") +
+  theme_minimal() +
+  labs(title="Example Visualization",
+       x="Value",
+       y="Count")
+```
+
+## Try It Yourself!
+
+**Why Choose Our App?**
+- Simple interface
+- Instant results
+- Visual insights
+- Perfect for beginners
+
+Visit: [https://belmouidi-learning-journey.shinyapps.io/my_shiny_app/]
+
+Source code: [https://github.com/Mohamed-BELMOUIDI/Shiny-application]

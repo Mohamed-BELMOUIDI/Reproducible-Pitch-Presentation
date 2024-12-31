@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Data Analysis Shiny App</title>
+<style type="text/css">
+/**
+ * Prism.s theme ported from highlight.js's xcode style
+ */
+pre code {
+  padding: 1em;
+}
+.token.comment {
+  color: #007400;
+}
+.token.punctuation {
+  color: #999;
+}
+.token.tag,
+.token.selector {
+  color: #aa0d91;
+}
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  color: #1c00cf;
+}
+.token.property,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin {
+  color: #c41a16;
+}
+.token.inserted {
+  background-color: #ccffd8;
+}
+.token.deleted {
+  background-color: #ffebe9;
+}
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #9a6e3a;
+}
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #836c28;
+}
+.token.function,
+.token.class-name {
+  color: #DD4A68;
+}
+.token.regex,
+.token.important,
+.token.variable {
+  color: #5c2699;
+}
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+</style>
+<style type="text/css">
+body {
+  font-family: sans-serif;
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+body, .footnotes, code { font-size: .9em; }
+li li { font-size: .95em; }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+pre, img { max-width: 100%; }
+pre, pre:hover {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+pre code {
+  display: block;
+  overflow-x: auto;
+}
+code { font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace; }
+:not(pre) > code, code[class] { background-color: #F8F8F8; }
+code.language-undefined, pre > code:not([class]) {
+  background-color: inherit;
+  border: 1px solid #eee;
+}
+table {
+  margin: auto;
+  border-top: 1px solid #666;
+}
+table thead th { border-bottom: 1px solid #ddd; }
+th, td { padding: 5px; }
+thead, tfoot, tr:nth-child(even) { background: #eee; }
+blockquote {
+  color: #666;
+  margin: 0;
+  padding-left: 1em;
+  border-left: 0.5em solid #eee;
+}
+hr, .footnotes::before { border: 1px dashed #ddd; }
+.frontmatter { text-align: center; }
+#TOC .numbered li { list-style: none; }
+#TOC .numbered { padding-left: 0; }
+#TOC .numbered ul { padding-left: 1em; }
+table, .body h2 { border-bottom: 1px solid #666; }
+.body .appendix, .appendix ~ h2 { border-bottom-style: dashed; }
+.footnote-ref a::before { content: "["; }
+.footnote-ref a::after { content: "]"; }
+section.footnotes::before {
+  content: "";
+  display: block;
+  max-width: 20em;
+}
+
+@media print {
+  body {
+    font-size: 12pt;
+    max-width: 100%;
+  }
+  tr, img { page-break-inside: avoid; }
+}
+@media only screen and (min-width: 992px) {
+  pre { white-space: pre; }
+}
+</style>
+</head>
+<body>
+<div class="frontmatter">
+<div class="title"><h1>Data Analysis Shiny App</h1></div>
+<div class="author"><h2></h2></div>
+<div class="date"><h3></h3></div>
+</div>
+<div class="body">
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+}
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.sng {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.def {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Data Analysis Shiny App</title>
+<style type="text/css">
+/**
+ * Prism.s theme ported from highlight.js's xcode style
+ */
+pre code {
+  padding: 1em;
+}
+.token.comment {
+  color: #007400;
+}
+.token.punctuation {
+  color: #999;
+}
+.token.tag,
+.token.selector {
+  color: #aa0d91;
+}
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  color: #1c00cf;
+}
+.token.property,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin {
+  color: #c41a16;
+}
+.token.inserted {
+  background-color: #ccffd8;
+}
+.token.deleted {
+  background-color: #ffebe9;
+}
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #9a6e3a;
+}
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #836c28;
+}
+.token.function,
+.token.class-name {
+  color: #DD4A68;
+}
+.token.regex,
+.token.important,
+.token.variable {
+  color: #5c2699;
+}
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+</style>
+<style type="text/css">
+body {
+  font-family: sans-serif;
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+body, .footnotes, code { font-size: .9em; }
+li li { font-size: .95em; }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+pre, img { max-width: 100%; }
+pre, pre:hover {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+pre code {
+  display: block;
+  overflow-x: auto;
+}
+code { font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace; }
+:not(pre) > code, code[class] { background-color: #F8F8F8; }
+code.language-undefined, pre > code:not([class]) {
+  background-color: inherit;
+  border: 1px solid #eee;
+}
+table {
+  margin: auto;
+  border-top: 1px solid #666;
+}
+table thead th { border-bottom: 1px solid #ddd; }
+th, td { padding: 5px; }
+thead, tfoot, tr:nth-child(even) { background: #eee; }
+blockquote {
+  color: #666;
+  margin: 0;
+  padding-left: 1em;
+  border-left: 0.5em solid #eee;
+}
+hr, .footnotes::before { border: 1px dashed #ddd; }
+.frontmatter { text-align: center; }
+#TOC .numbered li { list-style: none; }
+#TOC .numbered { padding-left: 0; }
+#TOC .numbered ul { padding-left: 1em; }
+table, .body h2 { border-bottom: 1px solid #666; }
+.body .appendix, .appendix ~ h2 { border-bottom-style: dashed; }
+.footnote-ref a::before { content: "["; }
+.footnote-ref a::after { content: "]"; }
+section.footnotes::before {
+  content: "";
+  display: block;
+  max-width: 20em;
+}
+<p>@media print {
+body {
+font-size: 12pt;
+max-width: 100%;
+}
+tr, img { page-break-inside: avoid; }
+}
+@media only screen and (min-width: 992px) {
+pre { white-space: pre; }
+}
+</style></p>
+</head>
+<body>
+<div class="frontmatter">
+<div class="title"><h1 id="data-analysis-shiny-app">Data Analysis Shiny App</h1></div>
+<div class="author"><h2 id="mohamed-belmouidi">Mohamed BELMOUIDI</h2></div>
+<div class="date"><h3 id="december-31-2024">December 31, 2024</h3></div>
+</div>
+<div class="body">
+<h2 id="the-problem">The Problem</h2>
+<p>Ever wondered how to quickly analyze numeric data?</p>
+<ul>
+<li>Many people struggle with basic data analysis</li>
+<li>Excel can be cumbersome</li>
+<li>Statistical software can be overwhelming</li>
+<li>Need for a simple, user-friendly solution</li>
+</ul>
+<h2 id="our-solution" class="build">Our Solution</h2>
+<p>Introducing the Data Analysis Shiny App!</p>
+<pre><code class="language-r"># Example of how simple the analysis can be
+sample_data &lt;- c(1, 2, 3, 4, 5)
+cat(&quot;Basic Statistics:\n&quot;)
+</code></pre>
+<pre><code>## Basic Statistics:
+</code></pre>
+<pre><code class="language-r">cat(&quot;Mean:&quot;, mean(sample_data), &quot;\n&quot;)
+</code></pre>
+<pre><code>## Mean: 3
+</code></pre>
+<pre><code class="language-r">cat(&quot;Median:&quot;, median(sample_data), &quot;\n&quot;)
+</code></pre>
+<pre><code>## Median: 3
+</code></pre>
+<pre><code class="language-r">cat(&quot;SD:&quot;, sd(sample_data), &quot;\n&quot;)
+</code></pre>
+<pre><code>## SD: 1.581139
+</code></pre>
+<h2 id="features-in-action">Features in Action</h2>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+</code></pre>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAEgCAIAAADXJ/ZqAAAACXBIWXMAAAsSAAALEgHS3X78AAAgAElEQVR4nO3deXQUVf428FtrL+ksJCEJkCCrBJBoQDZFQBgYUOBIYASUfRAZHHF0VPDg8lNxBHUcGRfmgAjnGIkgEgQOiwaduI0KCDKyGGISIoSAgayd6qWW948a+207nXSlqU61lefzV3f1za1vVdd9qlLdVU0pikIAAMC8aKMLAACAyELQAwCYHIIeAMDkzB/0ZWVlq1evjraumnaoV+e6FwkAv3VU5D6MraioWL9+vf+UhISEv/zlLxGaXXP+/e9/33HHHTU1NVoaFxUV5eXlrVixwmKx+CZ6vd7nn39++vTply5d0t5Va2trVZ3+iouLd+zY8eijjzbtEwCARPSIvqKi4umnn/7666+P/eLkyZORm50uUlNTV69evXv3bv+J+/fvX7VqVWpq6rBhw44fPx6hWYfdeXFx8QsvvHD1/QCAWbGRnsGmTZvS0tL8p2zZsoVhmBkzZqhP161bd80119x2222EkBMnTnz22WdOpzMrK2vcuHFqg6Kioj179ixZsmTr1q1Xrly58847MzIySkpKdu7cmZKSMnPmTJZlfc0WLFjw3nvv1dbWTpkypU+fPkFL+uijj7799ttOnTpNmjQpMTHR/6X4+PgpU6bk5uZOnz7dNzE3N/f2229PSkoqKyt79913V6xYoU4/ceLEwYMH3W53r169xo8fHxMTc+zYsa+++mrJkiVqg48//riqqurOO+9sbtH8VVZW+jp/6623ysvLfS8lJiYuW7YsaCdXrlzJzc1tbGz8v//7P0JITk5OXFycf5GiKO7cufPMmTNdu3adPn26+p+Kuq4WL168bdu2urq6CRMmZGZmhnonAeC3yoBz9D179pw3b97hw4cJIe+///6jjz7ar18/QsiJEyfGjBlTUFBw/Pjxu+6665577lHbFxUVrVmzZvz48R988EFeXt6gQYP2798/YcKEr7/++pFHHpk/f76v2apVq8aOHVtZWVlRUTFw4MAvvvii6dxnzJixaNGiU6dObd68ecCAASUlJQEN5s6du3fv3suXL6tP6+rqdu3aNXfuXPLr09/5+flDhgz5/PPPT548+eyzz+7Zs4cQcuzYsX/961++rj7++ONt27a1sGj+/DuXJEn8xXvv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2oWsrKyCgoJjx475przxxhs9e/YM2ri8vLykpKStSgOIOAQ9tAssy86ePXvTpk3q0+rq6r17986dO/fUqVNLly6dOHHiH//4x5MnTwb81WuvvZafn68+3rhx45YtW9THH3zwwaxZs3Jyct555502WwSAsLXfC6agvVm4cOGoUaNefPFFnue3bNkyZsyY1NTUqqqqBQsWdO3a9dixYzk5Od99953/1+SLi4t9j0tLSx0OByFky5YtO3bsWL16NUVR9913H8MwM2fONGB5ADTDET20F/379+/Ro8fu3bsJIZs2bVq4cCEhpGfPnkePHn3mmWfy8vKuXLlSVFQUsp9169Y1NjauWrXq2WefFQRhz549ES8d4OrgiB7akYULF27evLlPnz7nzp1Tb0jywAMPiKL45z//uUOHDt99913AT4v431Lcdzuzqqqqhx56yHcvBLvd3lblA4QJR/TQjsyaNauwsPBvf/vbnDlzWJYlhBw5cuRPf/pTdnZ2QkLCjz/+GNA+NTW1srJSffzdd9+pD4YMGfLpp592+4V6PgcgmuGIHtqR+Pj4yZMnb9myxfe565w5c/76179OmTLlq6++avpLSXfddde4ceNYlq2oqPDdxmT16tVTp0699dZbu3fv/t///vfee+9dtGhRmy4GQCvhXjcAACaHUzcAACaHoAcAMDkEPQCAySHoAQBMDkEPAGByCHoAAJND0AMAmNz/A+3fuy5y6XWGAAAAAElFTkSuQmCC" alt="plot of chunk unnamed-chunk-2" /></p>
+<h2 id="try-it-yourself">Try It Yourself!</h2>
+<p><strong>Why Choose Our App?</strong></p>
+<ul>
+<li>Simple interface</li>
+<li>Instant results</li>
+<li>Visual insights</li>
+<li>Perfect for beginners</li>
+</ul>
+<p>Visit: [https://belmouidi-learning-journey.shinyapps.io/my_shiny_app/]</p>
+<p>Source code: [https://github.com/Mohamed-BELMOUIDI/Shiny-application]</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
+</body>
+</body>
+</html>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
+</body>
+</body>
+</html>
